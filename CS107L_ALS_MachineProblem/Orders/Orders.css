@@ -1,0 +1,158 @@
+﻿.headers {
+    margin-left: 30px;
+    font-family: 'Arial Rounded MT';
+}
+
+.addOrderBtn {
+    border-radius: 10px;
+    margin-left: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 1100px;
+    color: #05AAEC;
+    border: none;
+}
+
+.whitesquare {
+    background-color: #ffff;
+    border-radius: 30px;
+    position: center;
+    margin-left: 80px;
+    margin-top: 30px;
+    height: 800px;
+    width: 1250px;
+}
+
+.search {
+    background-color: #ffff;
+    border: 1px solid #808080;
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: 15px;
+    font-family: 'Arial Rounded MT';
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+    .search Label1 {
+        font-size: 20px;
+        color: #555;
+    }
+
+.orders {
+    background-color: #ffff;
+    border: 1px solid #808080;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 200px;
+    margin-top: 15px;
+    font-family: 'Arial Rounded MT';
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 180px;
+}
+
+    .orders label {
+        font-size: 16px;
+        color: #444;
+    }
+
+.AddPaymentBtn {
+    background-color: #2CCD8A;
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+
+.ViewBtn {
+    background-color: #05AAEC;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin-left: 80px;
+}
+
+.SaveBtn {
+    border-radius: 10px;
+    height: 40px;
+    background-color: #05AAEC;
+    color: white;
+    margin-right: 20px;
+    width: 120px;
+    border: none;
+}
+
+.CancelButton {
+    border-radius: 10px;
+    height: 40px;
+    background-color: dimgrey;
+    color: white;
+    width: 100px;
+    border: none;
+}
+
+.labels {
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.fields {
+    border-radius: 10px;
+    width: 430px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.total-amount-to-pay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-color: grey;
+}
+
+.amount-label {
+    font-weight: 700;
+    margin-left: 10px;
+    width: 700px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.amount {
+    background-color: lightgray;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 18px;
+    width: 320px;
+    height: 30px;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.status-badge {
+    background: #6c757d;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.amount-box, .addon-box, .discount-box {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f1f1f1;
+    font-weight: bold;
+}

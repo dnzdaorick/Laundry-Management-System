@@ -1,0 +1,16 @@
+﻿.headers {
+    margin-left: 30px;
+    font-family: 'Arial Rounded MT';
+}
+
+.whitesquare {
+    background-color: #ffff;
+    width: 1000px;
+    height: 450px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: center;
+    margin-left: 100px;
+    

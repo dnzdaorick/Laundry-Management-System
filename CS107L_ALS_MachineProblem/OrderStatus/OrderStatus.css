@@ -1,0 +1,89 @@
+﻿.headers {
+     margin-left: 30px;
+     font-family: 'Arial Rounded MT';
+ }
+
+.addOrderBtn {
+    border-radius: 10px;
+    margin-left: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 1100px;
+    color: #05AAEC;
+    border: none;
+}
+
+.whitesquare {
+    background-color: #ffff;
+    border-radius: 30px;
+    position: center;
+    margin-left: 80px;
+    margin-top: 30px;
+    height: 600px;
+    width: 1250px;
+}
+
+
+
+.Text1 {
+    color: #05AAEC;
+    font-family: 'Arial Rounded MT'
+}
+
+.Text2 {
+    color: #000;
+    font-family: Arial;
+    font-size: xx-large;
+}
+
+.Text3 {
+    color: #b3e114;
+    font-family: Arial;
+    font-size: xx-large;
+}
+
+.Text4 {
+    color: #39e218;
+    font-family: Arial;
+    font-size: xx-large;
+}
+
+.square1 {
+    background-color: #ffffff;
+    border: 1px solid #000;
+    margin-left: 20px;
+    width: 260px;
+    height: 150px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.square2 {
+    background-color: #ffffff;
+    border: 1px solid #b3e114;
+    margin-left: 20px;
+    width: 260px;
+    height: 150px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.square3 {
+    background-color: #ffffff;
+    border: 1px solid #39e218;
+    margin-left: 20px;
+    width: 260px;
+    height: 150px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider {
+    border-left: 2px solid #ddd;
+    height: 450px;
+    margin: 0 10px;
+}
