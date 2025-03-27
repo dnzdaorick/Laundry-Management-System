@@ -14,30 +14,30 @@ namespace CS107L_ALS_MachineProblem
 
 		}
 
-        protected void home_func(object sender, EventArgs e)
+        protected void dashboard_page(object sender, EventArgs e)
 		{
-            Response.Redirect("Home.aspx");
+            Response.Redirect("../Dashboard/Dashboard.aspx");
         }
 
-		protected void pos_func(object sender, EventArgs e)
+		protected void pos_page(object sender, EventArgs e)
 		{
-            Response.Redirect("POS.aspx");
+            Response.Redirect("../POS/POS.aspx");
         }
 
-		protected void order_func(object sender, EventArgs e)
+		protected void order_page(object sender, EventArgs e)
 		{
-            Response.Redirect("Orders.aspx");
+            Response.Redirect("../Orders/Orders.aspx");
         }
 
-        protected void orderstat_func(object sender, EventArgs e)
+        protected void orderstatus_page(object sender, EventArgs e)
         {
-            Response.Redirect("Orderstat.aspx");
+            Response.Redirect("../OrderStatus/OrderStatus.aspx");
 
         }
 
-        protected void service_func(object sender, EventArgs e)
+        protected void service_page(object sender, EventArgs e)
         {
-            Response.Redirect("Services.aspx");
+            Response.Redirect("..Services/Services.aspx");
 
         }
 

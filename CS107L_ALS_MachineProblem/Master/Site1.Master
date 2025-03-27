@@ -3,34 +3,48 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
-    <title>Aila Laundry Services</title>
-    <link href="Site1.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body style="background-color:#dee2e6;">
+    <head runat="server">
+        <title>Aila Laundry Services</title>
+        <link href="Site1.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
     <form id="form1" runat="server">
         <div class="main-frame">
-            <!-- Side Panel for every page -->
-            <div class="LeftStrip">
-                <div class="blank-box"></div>
-                <div class ="navigation">
-                <asp:ImageButton ID="home" ImageUrl="~/images/Vector.png" width="35px" CssClass="Icons" runat="server" Onclick="home_func"/> 
-                <asp:ImageButton ID="tag" ImageUrl="~/images/Tag.png" width="35px" CssClass="Icons" runat="server" OnClick="pos_func" /> 
-                <asp:ImageButton ID="basket" ImageUrl="~/images/Basket.png" width="35px" CssClass="Icons" runat="server" OnClick ="order_func" /> 
-                <asp:ImageButton ID="status" ImageUrl="~/images/Status.png" width="35px" CssClass="Icons" runat="server" OnClick="orderstat_func" /> 
-                <asp:ImageButton ID="service" ImageUrl="~/images/washing-machine.png" width="35px" CssClass="Icons" runat="server" OnClick="service_func" />
-                <asp:ImageButton ID="user" ImageUrl="~/images/user.png" width="35px" CssClass="Icons" runat="server" OnClick="user_func" /> 
-                <asp:ImageButton ID="report" ImageUrl="~/images/Report.png" width="35px" CssClass="Icons" runat="server" OnClick="reports_func" /> 
+            
+            <div class="navigation-bar">
+                <div class="navbar-accent"></div>
+                <div class="navigation-container">
+                    <div class="icon-container">
+                        <asp:ImageButton ID="home" ImageUrl="~/images/Vector.png" width="35px" CssClass="Icons" runat="server" Onclick="dashboard_page"/> 
+                    </div>
+                    <div class="icon-container">
+                        <asp:ImageButton ID="tag" ImageUrl="~/images/Tag.png" width="35px" CssClass="Icons" runat="server" OnClick="pos_page" /> 
+                    </div>
+                    <div class="icon-container">
+                        <asp:ImageButton ID="basket" ImageUrl="~/images/Basket.png" width="35px" CssClass="Icons" runat="server" OnClick ="order_page" /> 
+                    </div>
+                    <div class="icon-container">
+                        <asp:ImageButton ID="status" ImageUrl="~/images/Status.png" width="35px" CssClass="Icons" runat="server" OnClick="orderstatus_page" /> 
+                    </div>
+                    <div class="icon-container">
+                        <asp:ImageButton ID="service" ImageUrl="~/images/washing-machine.png" width="35px" CssClass="Icons" runat="server" OnClick="service_page" />
+                    </div>
+                    <div class="icon-container">
+                        <asp:ImageButton ID="user" ImageUrl="~/images/user.png" width="35px" CssClass="Icons" runat="server" OnClick="user_func" /> 
+                    </div> 
+                    <div class="icon-container">
+                        <asp:ImageButton ID="report" ImageUrl="~/images/Report.png" width="35px" CssClass="Icons" runat="server" OnClick="reports_func" /> 
+                    </div>
                 </div>
             </div>
-
             <!-- Main Content for every page -->
-            <div class="rectangle ContentArea">
+            <div class="ContentArea">
                 <asp:ContentPlaceHolder ID="mainContent" runat="server" >
                 </asp:ContentPlaceHolder>
-           </div>
+            </div>
+
         </div>
     </form>
-</body>
+    </body>
 </html>

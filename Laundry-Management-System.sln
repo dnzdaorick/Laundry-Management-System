@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75 d17.13
+VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS107L_ALS_MachineProblem", "CS107L_ALS_MachineProblem\CS107L_ALS_MachineProblem.csproj", "{DF365AD7-4CEB-4733-AE31-107FC07A51D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laundry-Management-System", "CS107L_ALS_MachineProblem\Laundry-Management-System.csproj", "{DF365AD7-4CEB-4733-AE31-107FC07A51D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,7 +16,7 @@ namespace CS107L_ALS_MachineProblem
 
         protected void SignUpbtn_Click(object sender, EventArgs e)
         {
-			Response.Redirect("Home.aspx");
+			Response.Redirect("Dashboard/Dashboard.aspx");
         }
     }
 }
