@@ -9,7 +9,7 @@ public class DataAccess
 
     public DataAccess()
     {
-        connectionString = "Server=DNZDAORICK\\MSSQLSERVER01;Database=LaundryManagementSystem;Integrated Security=True;";
+        connectionString = "Server=WFH\\SQLEXPRESS01;Database=LaundryManagementSystem;Integrated Security=True;";
 
     }
 
