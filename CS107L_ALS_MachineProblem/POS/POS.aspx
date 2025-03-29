@@ -23,7 +23,7 @@
 
     function FilterCategories() {
         var input = document.getElementById('<%= SearchTextBox.ClientID %>').value.toLowerCase();
-        var categories = document.getElementsByClassName('category-box');
+        var categories = document.getElementsByClassName('services-category-box');
         for (var i = 0; i < categories.length; i++) {
             var category = categories[i];
             var label = category.getElementsByClassName('normal-text')[0].innerText.toLowerCase();
@@ -37,7 +37,7 @@
 
     function FilterPopupCategories() {
         var input = document.getElementById('<%= TextBox1.ClientID %>').value.toLowerCase();
-        var categories = document.getElementsByClassName('category-box');
+        var categories = document.getElementsByClassName('services-category-box');
         for (var i = 0; i < categories.length; i++) {
             var category = categories[i];
             var label = category.getElementsByClassName('normal-text')[0].innerText.toLowerCase();
@@ -45,6 +45,20 @@
                 category.style.display = '';
             } else {
                 category.style.display = 'none';
+            }
+        }
+    }
+
+    function FilterCustomers() {
+        var input = document.getElementById('<%= TextBox2.ClientID %>').value.toLowerCase();
+        var customers = document.getElementsByClassName('services-category-box');
+        for (var i = 0; i < customers.length; i++) {
+            var customer = customers[i];
+            var label = customer.getElementsByClassName('normal-text')[0].innerText.toLowerCase();
+            if (label.includes(input)) {
+                customer.style.display = '';
+            } else {
+                customer.style.display = 'none';
             }
         }
     }
@@ -59,7 +73,6 @@
         __doPostBack('LoadServiceCategories', categoryName);
     }
 </script>
-
 
     <div class="main-content">
         <div class="title-frame">
@@ -90,11 +103,31 @@
                             <label id="calendar-label" class="calendar-label">Delivery Date</label>
                         </div>
                     </div>
+                    <div class="table-container">
+                        <div class="meta-data-container">
+                            <div class="meta-data-frame">
+                                <div class="service-meta-data">
+                                    <label class="table-text">SERVICE</label>
+                                </div>
+                                <div class="service-meta-data">
+                                    <label class="table-text">COLOR</label>
+                                </div>
+                                <div class="service-meta-data">
+                                    <label class="table-text">RATE /KG</label>
+                                </div>
+                                <div class="service-meta-data">
+                                    <label class="table-text">WEIGHT</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="select-service-container">
-                <div class="select-service-main-frame">
-                    <div class="select-service-title">
+            
+            <!-- Service Type Popup-->
+            <div class="popup-container">
+                <div class="popup-main-frame">
+                    <div class="popup-title-frame">
                         <label class="popup-title">Select A Service</label>
                     </div>
                     <div class="popup-line"></div>
@@ -107,6 +140,26 @@
                         <div class="services-button-frame">
                             <asp:Button ID="CancelButton" runat="server" CssClass="button" Text="Cancel" />
                             <asp:Button ID="SelectButton" runat="server" CssClass="button" Text="Select" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Select A Customer Popup-->
+            <div class="popup-container">
+                <div class="popup-main-frame">
+                    <div class="popup-title-frame">
+                        <label class="popup-title">Select A Customer</label>
+                    </div>
+                    <div class="popup-line"></div>
+                    <div class="popup-search-frame">
+                        <asp:TextBox ID="TextBox2" runat="server" CssClass="popup-search-bar" onkeyup="FilterCustomers()" onkeypress="return SearchOnEnter(event)" placeholder="Search Here"></asp:TextBox>
+                    </div>
+                    <div class="services-category-frame" id="customersContainerFrame" runat="server"></div>
+                    <div class="services-footer-frame">
+                        <div class="popup-small-line"></div>
+                        <div class="services-button-frame">
+                            <asp:Button ID="Button1" runat="server" CssClass="button" Text="Cancel" />
+                            <asp:Button ID="Button2" runat="server" CssClass="button" Text="Select" />
                         </div>
                     </div>
                 </div>

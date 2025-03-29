@@ -116,6 +116,7 @@
     <Content Include="images\phone-call.png" />
     <Content Include="images\Plus.png" />
     <Content Include="images\Processing.png" />
+    <Content Include="images\Profile.png" />
     <Content Include="images\Report.png" />
     <Content Include="images\Status.png" />
     <Content Include="images\Tag.png" />

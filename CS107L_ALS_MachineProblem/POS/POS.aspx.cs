@@ -13,18 +13,19 @@ namespace CS107L_ALS_MachineProblem
     {
         protected HtmlGenericControl categoriesFrame;
         protected HtmlGenericControl servicesCategoryFrame;
-
+        protected HtmlGenericControl customersContainerFrame;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadData();
-                GenerateCategories();
                 LoadServiceCategoriesData();
+                LoadCustomerData();
+                GenerateCategories();
                 GenerateServiceCategories();
+                GenerateCustomers();
                 SetLastOrderCode();
-
             }
         }
 
@@ -41,6 +42,61 @@ namespace CS107L_ALS_MachineProblem
             DataTable dt = dataAccess.GetData("SELECT * FROM service_category");
             ViewState["ServiceCategoryData"] = dt;
         }
+        private void LoadCustomerData()
+        {
+            DataAccess dataAccess = new DataAccess();
+            DataTable dt = dataAccess.GetData("SELECT * FROM customers"); // Assuming the table name is 'customers'
+            ViewState["CustomerData"] = dt;
+        }
+
+        private void GenerateCustomers()
+        {
+            DataTable dt = ViewState["CustomerData"] as DataTable;
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    string customerName = row["customer_name"].ToString();
+                    string imageUrl = $"../images/Profile.png";
+
+                    // Create customer box div  
+                    HtmlGenericControl customerBox = new HtmlGenericControl("div");
+                    customerBox.Attributes["class"] = "services-category-box";
+                    customerBox.Attributes["onclick"] = "selectCustomerBox(this);";
+
+                    // Create icon-text div  
+                    HtmlGenericControl iconText = new HtmlGenericControl("div");
+                    iconText.Attributes["class"] = "icon-text";
+
+                    // Create RadioButton  
+                    RadioButton radioButton = new RadioButton();
+                    radioButton.GroupName = "CustomerGroup";
+                    radioButton.CssClass = "radio-button";
+                    radioButton.Attributes["onclick"] = "selectCustomer(this);";
+
+                    // Create Image  
+                    HtmlImage image = new HtmlImage();
+                    image.Src = imageUrl;
+                    image.Attributes["class"] = "image";
+
+                    // Create label  
+                    Label label = new Label();
+                    label.CssClass = "normal-text";
+                    label.Text = customerName;
+
+                    // Add controls to icon-text div  
+                    iconText.Controls.Add(image);
+                    iconText.Controls.Add(label);
+                    iconText.Controls.Add(radioButton);
+
+                    // Add icon-text div to customer box div  
+                    customerBox.Controls.Add(iconText);
+
+                    // Add customer box div to customersContainerFrame  
+                    customersContainerFrame.Controls.Add(customerBox);
+                }
+            }
+        }
 
         private void GenerateCategories()
         {
@@ -51,21 +107,26 @@ namespace CS107L_ALS_MachineProblem
                 {
                     string categoryName = row["service_type_name"].ToString();
                     string imageUrl = $"../images/{categoryName}.png";
-                    System.Diagnostics.Debug.WriteLine(imageUrl);
 
                     // Create category box div
                     HtmlGenericControl categoryBox = new HtmlGenericControl("div");
-                    categoryBox.Attributes["class"] = "category-box";
+                    categoryBox.Attributes["class"] = "services-category-box";
+                    categoryBox.Attributes["onclick"] = "selectCategoryBox(this);";
 
                     // Create icon-text div
                     HtmlGenericControl iconText = new HtmlGenericControl("div");
                     iconText.Attributes["class"] = "icon-text";
 
-                    // Create ImageButton
-                    ImageButton imageButton = new ImageButton();
-                    imageButton.ImageUrl = imageUrl;
-                    imageButton.CssClass = "image-button";
-                    imageButton.OnClientClick = "ShowSelectServiceModal(); return false;";
+                    // Create RadioButton
+                    RadioButton radioButton = new RadioButton();
+                    radioButton.GroupName = "CategoryGroup";
+                    radioButton.CssClass = "radio-button";
+                    radioButton.Attributes["onclick"] = "selectCategory(this);";
+
+                    // Create Image
+                    HtmlImage image = new HtmlImage();
+                    image.Src = imageUrl;
+                    image.Attributes["class"] = "image";
 
                     // Create label
                     Label label = new Label();
@@ -73,8 +134,9 @@ namespace CS107L_ALS_MachineProblem
                     label.Text = categoryName;
 
                     // Add controls to icon-text div
-                    iconText.Controls.Add(imageButton);
+                    iconText.Controls.Add(image);
                     iconText.Controls.Add(label);
+                    iconText.Controls.Add(radioButton);
 
                     // Add icon-text div to category box div
                     categoryBox.Controls.Add(iconText);
@@ -97,17 +159,23 @@ namespace CS107L_ALS_MachineProblem
 
                     // Create category box div
                     HtmlGenericControl categoryBox = new HtmlGenericControl("div");
-                    categoryBox.Attributes["class"] = "category-box";
+                    categoryBox.Attributes["class"] = "services-category-box";
+                    categoryBox.Attributes["onclick"] = "selectServiceCategoryBox(this);";
 
                     // Create icon-text div
                     HtmlGenericControl iconText = new HtmlGenericControl("div");
                     iconText.Attributes["class"] = "icon-text";
 
+                    // Create RadioButton
+                    RadioButton radioButton = new RadioButton();
+                    radioButton.GroupName = "ServiceCategoryGroup";
+                    radioButton.CssClass = "radio-button";
+                    radioButton.Attributes["onclick"] = "selectServiceCategory(this);";
+
                     // Create Image
                     HtmlImage image = new HtmlImage();
                     image.Src = imageUrl;
-                    image.Attributes["class"] = "image-button";
-                    image.Attributes["onclick"] = "ShowSelectServiceModal(); return false;";
+                    image.Attributes["class"] = "image";
 
                     // Create label
                     Label label = new Label();
@@ -117,6 +185,7 @@ namespace CS107L_ALS_MachineProblem
                     // Add controls to icon-text div
                     iconText.Controls.Add(image);
                     iconText.Controls.Add(label);
+                    iconText.Controls.Add(radioButton);
 
                     // Add icon-text div to category box div
                     categoryBox.Controls.Add(iconText);
@@ -126,6 +195,10 @@ namespace CS107L_ALS_MachineProblem
                 }
             }
         }
+
+
+
+
         private void SetLastOrderCode()
         {
             DataAccess dataAccess = new DataAccess();
@@ -140,7 +213,6 @@ namespace CS107L_ALS_MachineProblem
                 orderLabel.Text = newOrderCode;
             }
         }
-
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
