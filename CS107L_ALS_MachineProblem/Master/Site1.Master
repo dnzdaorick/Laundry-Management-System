@@ -37,12 +37,10 @@
                     </div>
                 </div>
             </div>
-            <!-- Main Content for every page -->
             <div class="ContentArea">
-                <asp:ContentPlaceHolder ID="mainContent" runat="server" >
-                </asp:ContentPlaceHolder>
+            <!-- Main Content for every page -->
+                <asp:ContentPlaceHolder ID="mainContent" runat="server" ></asp:ContentPlaceHolder>
             </div>
-
         </div>
     </form>
     </body>
