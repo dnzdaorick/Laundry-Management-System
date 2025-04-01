@@ -11,11 +11,6 @@ namespace CS107L_ALS_MachineProblem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                date.Text = DateTime.Now.ToString("MM dd yy");
-                time.Text = DateTime.Now.ToString("hh:mm tt");
-            }
         }
     }
 }

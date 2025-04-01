@@ -147,6 +147,7 @@
   <ItemGroup>
     <Compile Include="bootstrap\Modal.cs" />
     <Compile Include="DataAcessLayer\DataAcess.cs" />
+    <Content Include="Reports\Reports.js" />
     <Compile Include="SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

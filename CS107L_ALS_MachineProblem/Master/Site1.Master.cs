@@ -37,7 +37,7 @@ namespace CS107L_ALS_MachineProblem
 
         protected void service_page(object sender, EventArgs e)
         {
-            Response.Redirect("..Services/Services.aspx");
+            Response.Redirect("../Services/Services.aspx");
 
         }
 
@@ -48,7 +48,7 @@ namespace CS107L_ALS_MachineProblem
 
         protected void reports_func(object sender, EventArgs e)
         {
-            Response.Redirect("Reports.aspx");
+            Response.Redirect("../Reports/Reports.aspx");
 
         }
 
