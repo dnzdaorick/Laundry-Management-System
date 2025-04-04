@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ALS | Customer" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="CS107L_ALS_MachineProblem.WebForm7" %>
+﻿<%@ Page Title="ALS | Customer" Language="C#" MasterPageFile="/Master/Site1.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="CS107L_ALS_MachineProblem.WebForm7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="mainContent" runat="server">
     <style>
         .headers {

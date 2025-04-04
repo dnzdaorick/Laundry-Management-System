@@ -6,7 +6,9 @@ CREATE TABLE service_type (
     service_type_id INT IDENTITY(1,1) PRIMARY KEY, -- Auto-incrementing primary key for service type
     service_type_code AS ('SRVT-' + RIGHT('000' + CAST(service_type_id AS NVARCHAR), 3)) PERSISTED, -- Computed column for service type code (e.g., SRVT-001)
     service_type_name NVARCHAR(50) NOT NULL UNIQUE, -- Unique name of the service type
-    service_rate DECIMAL(10, 2) NOT NULL, -- Rate for the service type (e.g., 30.00)
+   
+	min_weight DECIMAL(10, 2) NOT NULL, -- Minimum weight allowed for this category
+    max_weight DECIMAL(10, 2) NOT NULL, -- Maximum weight allowed for this category
 );
 
 -- Table: SERVICE_CATEGORY
@@ -15,8 +17,7 @@ CREATE TABLE service_category (
     service_category_id INT IDENTITY(1,1) PRIMARY KEY, -- Auto-incrementing primary key for service category
     service_category_code AS ('SRVC-' + RIGHT('000' + CAST(service_category_id AS NVARCHAR), 3)) PERSISTED, -- Computed column for service category code (e.g., SRVC-001)
     service_category_name NVARCHAR(50) NOT NULL UNIQUE, -- Unique name of the service category
-    min_weight DECIMAL(10, 2) NOT NULL, -- Minimum weight allowed for this category
-    max_weight DECIMAL(10, 2) NOT NULL, -- Maximum weight allowed for this category
+	service_rate DECIMAL(10, 2) NOT NULL, -- Rate for the service type (e.g., 30.00)
     CHECK (min_weight <= max_weight), -- Ensures that min_weight is less than or equal to max_weight
 );
 

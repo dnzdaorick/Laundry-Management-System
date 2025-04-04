@@ -14,12 +14,12 @@
                                 <label>PENDING ORDERS</label>
                             </div>
                             <div class="status-value-frame">
-                            <div class="icon-frame">
-                                <img src="../images/Basket.png" class="icon" />
-                            </div>
+                                <div class="icon-frame">
+                                    <img src="../images/Basket.png" class="icon" />
+                                </div>
                             </div>
                         </div>
-                        <label>0</label>
+                        <asp:Label ID="lblPendingOrders" runat="server" Text="0" />
                     </div>
                     <div class="status-box">
                         <div class="status-label-container">
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </div>
-                        <label>0</label>
+                        <asp:Label ID="lblProcessingOrders" runat="server" Text="0" />
                     </div>
                     <div class="status-box">
                         <div class="status-label-container">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <label>0</label>
+                        <asp:Label ID="lblReadyToDeliver" runat="server" Text="0" />
                     </div>
                     <div class="status-box">
                         <div class="status-label-container">
@@ -58,10 +58,12 @@
                                 </div>
                             </div>
                         </div>
-                        <label>0</label>
+                        <asp:Label ID="lblDeliveredOrders" runat="server" Text="0" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </asp:Content>
+
+

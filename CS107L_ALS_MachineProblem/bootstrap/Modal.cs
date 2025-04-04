@@ -13,7 +13,8 @@ namespace bootstrap
 
         internal void show()
         {
-            throw new NotImplementedException();
+            // Implement the logic to display the modal
+            Console.WriteLine("Modal is shown with content: " + this.value);
         }
     }
 }

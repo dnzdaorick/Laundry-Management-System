@@ -16,7 +16,11 @@ namespace CS107L_ALS_MachineProblem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }   
+            if (!IsPostBack)
+            {
+                Modal modal = new Modal("Your modal content");
+                modal.show();
+            }
+        }
     }
 }

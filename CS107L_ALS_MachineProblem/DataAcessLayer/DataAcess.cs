@@ -31,13 +31,24 @@ public class DataAccess
 
     public void ExecuteQuery(string query)
     {
-        using (SqlConnection conn = new SqlConnection(connectionString))
+        try
         {
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-                cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
+        catch (SqlException ex)
+        {
+            // Log the exception message
+            Console.WriteLine($"SQL Error: {ex.Message}");
+            // Optionally, rethrow the exception or handle it as needed
+            throw;
+        }
     }
+
 }
