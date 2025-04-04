@@ -4,6 +4,8 @@
     <asp:HiddenField ID="hfSelectedServiceCategory" runat="server" />
     <asp:HiddenField ID="hfSelectedCustomer" runat="server" />
     <asp:HiddenField ID="hfSelectedWeight" runat="server" />
+    <asp:HiddenField ID="hfSelectedColor" runat="server" />
+    <asp:HiddenField ID="hfSelectedDeliveryDate" runat="server" />
     <asp:HiddenField ID="hfSelectedRate" runat="server" />
 
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -82,14 +84,6 @@
 
         function LoadServiceCategories(categoryName) {
             __doPostBack('LoadServiceCategories', categoryName);
-        }
-
-        function updateWeightLabel(increment) {
-            var weightLabel = document.getElementById('weightLabel');
-            var currentWeight = parseFloat(weightLabel.innerText);
-            var newWeight = currentWeight + increment;
-            if (newWeight < 0) newWeight = 0; // Ensure weight doesn't go below 0
-            weightLabel.innerText = newWeight.toFixed(2);
         }
     </script>
 
@@ -201,7 +195,7 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" CssClass="popup-search-bar" onkeyup="FilterCustomers()" onkeypress="return SearchOnEnter(event)" placeholder="Search Here"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" CssClass="popup-search-bar" onkeyup="Filtercustomers_page()" onkeypress="return SearchOnEnter(event)" placeholder="Search Here"></asp:TextBox>
                         <div class="services-category-frame" id="customersContainerFrame" runat="server"></div>
                     </ContentTemplate>
                     <Triggers>

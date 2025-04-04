@@ -41,9 +41,9 @@ namespace CS107L_ALS_MachineProblem
 
         }
 
-        protected void user_func(object sender, EventArgs e)
+        protected void customers_page(object sender, EventArgs e)
         {
-            Response.Redirect("User.aspx");
+            Response.Redirect("../Customers/Customers.aspx");
         }
 
         protected void reports_func(object sender, EventArgs e)

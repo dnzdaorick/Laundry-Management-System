@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 
 namespace CS107L_ALS_MachineProblem
 {
@@ -19,6 +20,9 @@ namespace CS107L_ALS_MachineProblem
         protected int selectedCustomerID;
         protected int selectedServiceTypeId;
         protected int selectedServiceCategoryId;
+        protected decimal selectedWeight;
+        protected string selectedColor;
+        protected string hfSelectedDeliveryDate;
         protected List<InitialOrder> orders = new List<InitialOrder>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -29,6 +33,29 @@ namespace CS107L_ALS_MachineProblem
                 LoadServiceCategoriesData();
                 LoadCustomerData();
                 SetLastOrderCode();
+            }
+            else
+            {
+                if (ViewState["SelectedCustomerID"] != null)
+                {
+                    selectedCustomerID = (int)ViewState["SelectedCustomerID"];
+                }
+                if (ViewState["SelectedServiceTypeID"] != null)
+                {
+                    selectedServiceTypeId = (int)ViewState["SelectedServiceTypeID"];
+                }
+                if (ViewState["SelectedServiceCategoryID"] != null)
+                {
+                    selectedServiceCategoryId = (int)ViewState["SelectedServiceCategoryID"];
+                }
+                if (ViewState["SelectedWeight"] != null)
+                {
+                    selectedWeight = (decimal)ViewState["SelectedWeight"];
+                }
+                if (ViewState["SelectedColor"] != null)
+                {
+                    selectedColor = (string)ViewState["SelectedColor"];
+                }
             }
 
             if (ViewState["ServiceTypeData"] != null)
@@ -50,33 +77,7 @@ namespace CS107L_ALS_MachineProblem
                 if (!string.IsNullOrEmpty(hfSelectedCategoryType.Value))
                 {
                     selectedServiceTypeId = int.Parse(hfSelectedCategoryType.Value);
-                    Debug.WriteLine($"Selected Category Type: {selectedServiceTypeId}");
                 }
-
-                if (!string.IsNullOrEmpty(hfSelectedServiceCategory.Value))
-                {
-                    selectedServiceCategoryId = int.Parse(hfSelectedServiceCategory.Value);
-                    Debug.WriteLine($"Selected Service Category ID: {selectedServiceCategoryId}");
-                }
-
-                if (!string.IsNullOrEmpty(hfSelectedCustomer.Value))
-                {
-                    selectedCustomerID = int.Parse(hfSelectedCustomer.Value);
-                    Debug.WriteLine($"Selected Customer ID: {selectedCustomerID}");
-                }
-
-                if (!string.IsNullOrEmpty(hfSelectedWeight.Value))
-                {
-                    decimal selectedWeight = decimal.Parse(hfSelectedWeight.Value);
-                    Debug.WriteLine($"Selected Weight: {selectedWeight}");
-                }
-
-                if (!string.IsNullOrEmpty(hfSelectedRate.Value))
-                {
-                    decimal selectedRate = decimal.Parse(hfSelectedRate.Value);
-                    Debug.WriteLine($"Selected Rate: {selectedRate}");
-                }
-
             }
         }
 
@@ -116,7 +117,7 @@ namespace CS107L_ALS_MachineProblem
                 foreach (DataRow row in dt.Rows)
                 {
                     string customerName = row["customer_name"].ToString();
-                    string customerId = row["customer_id"].ToString(); // Assuming there is a customer_id column
+                    string customerId = row["customer_id"].ToString(); 
                     string imageUrl = $"../images/Profile.png";
 
                     // Create customer box div  
@@ -166,7 +167,7 @@ namespace CS107L_ALS_MachineProblem
                 foreach (DataRow row in dt.Rows)
                 {
                     string categoryName = row["service_type_name"].ToString();
-                    string categoryTypeId = row["service_type_id"].ToString(); // Assuming there is a service_type_id column
+                    string categoryTypeId = row["service_type_id"].ToString();
                     string imageUrl = $"../images/{categoryName}.png";
 
                     // Create category box div
@@ -215,7 +216,7 @@ namespace CS107L_ALS_MachineProblem
                 foreach (DataRow row in dt.Rows)
                 {
                     string categoryName = row["service_category_name"].ToString();
-                    string categoryId = row["service_category_id"].ToString(); // Assuming there is a service_category_id column
+                    string categoryId = row["service_category_id"].ToString();
                     string imageUrl = $"../images/{categoryName}.png";
 
                     // Create category box div
@@ -277,7 +278,6 @@ namespace CS107L_ALS_MachineProblem
             string selectedCustomer = GetSelectedCustomer();
             if (!string.IsNullOrEmpty(selectedCustomer))
             {
-                Debug.WriteLine($"Selected Customer ID: {selectedCustomer}");
                 selectedCustomerID = int.Parse(selectedCustomer);
                 ViewState["SelectedCustomerID"] = selectedCustomerID;
             }
@@ -323,7 +323,6 @@ namespace CS107L_ALS_MachineProblem
             string selectedServiceCategory = GetSelectedServiceCategory();
             if (!string.IsNullOrEmpty(selectedServiceCategory))
             {
-                Debug.WriteLine($"Selected Service Category ID: {selectedServiceCategory}");
                 selectedServiceCategoryId = int.Parse(selectedServiceCategory);
                 ViewState["SelectedServiceCategoryID"] = selectedServiceCategoryId;
 
@@ -331,7 +330,6 @@ namespace CS107L_ALS_MachineProblem
                 decimal rate = GetServiceRate(selectedServiceTypeId);
 
                 // Create a new order and add it to the list
-                Debug.WriteLine($"rate: {rate}");
                 InitialOrder newOrder = new InitialOrder
                 {
                     ServiceTypeId = selectedServiceTypeId,
@@ -469,7 +467,8 @@ namespace CS107L_ALS_MachineProblem
             // Create weight label
             Label weightLabel = new Label();
             weightLabel.CssClass = "weight-label";
-            weightLabel.Text = GetSelectedWeight().ToString("0.00");
+            weightLabel.Text = selectedWeight.ToString("0.00");
+            weightLabel.Attributes["id"] = "weightLabel"; // Ensure this ID is correct
 
             // Add weight label to weight label frame
             weightLabelFrame.Controls.Add(weightLabel);
@@ -509,9 +508,20 @@ namespace CS107L_ALS_MachineProblem
 
             // Add row container to data container
             dataContainer.Controls.Add(rowContainer);
+
+            // Add JavaScript for updating weight label
+            string script = @"
+    <script type='text/javascript'>
+        function updateWeightLabel(change) {
+            var weightLabel = document.getElementById('weightLabel');
+            var currentWeight = parseFloat(weightLabel.innerText);
+            var newWeight = currentWeight + change;
+            if (newWeight < 0) newWeight = 0;
+            weightLabel.innerText = newWeight.toFixed(2);
         }
-
-
+    </script>";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "updateWeightLabelScript", script);
+        }
 
 
         private string GetServiceTypeName(int serviceTypeId)
@@ -559,29 +569,8 @@ namespace CS107L_ALS_MachineProblem
 
         private string GetSelectedColor()
         {
-            // Find the color picker control
-            HtmlInputControl colorPicker = (HtmlInputControl)FindControl("colorPicker");
-            if (colorPicker != null)
-            {
-                return colorPicker.Value;
-            }
-            return "#FFFFFF";
+            return null;
         }
-
-        private decimal GetSelectedWeight()
-        {
-            // Find the weight label control
-            Label weightLabel = (Label)FindControl("weightLabel");
-            if (weightLabel != null)
-            {
-                if (decimal.TryParse(weightLabel.Text, out decimal weight))
-                {
-                    return weight;
-                }
-            }
-            return 0.00m; // Default weight if not found or invalid
-        }
-
 
 
 
@@ -633,12 +622,11 @@ namespace CS107L_ALS_MachineProblem
             // Clear the data container
             dataContainer.Controls.Clear();
         }
-
         protected void SaveOrder_Click(object sender, EventArgs e)
         {
             string deliveryDate = Request.Form["calendar-label"];
             string orderColor = GetSelectedColor();
-            decimal orderWeight = GetSelectedWeight();
+            decimal orderWeight = 0;
             int serviceTypeId = selectedServiceTypeId;
             int serviceCategoryId = selectedServiceCategoryId;
             int customerId = selectedCustomerID;
@@ -650,25 +638,30 @@ namespace CS107L_ALS_MachineProblem
                             $"service category id: {serviceCategoryId}  \n" +
                             $"customer id: {customerId}");
 
-           DataAccess dataAccess = new DataAccess();
+            if (customerId == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Customer ID cannot be null.');", true);
+                return;
+            }
 
+            DataAccess dataAccess = new DataAccess();
 
             string query = $@"
-                INSERT INTO orders (
-                    service_type_id, 
-                    service_category_id, 
-                    customer_id, 
-                    order_weight, 
-                    delivery_date, 
-                    order_color
-                ) VALUES (
-                    {serviceTypeId}, 
-                    {serviceCategoryId}, 
-                    {customerId}, 
-                    {orderWeight}, 
-                    '{deliveryDate}', 
-                    '{orderColor}'
-                )";
+    INSERT INTO orders (
+        service_type_id, 
+        service_category_id, 
+        customer_id, 
+        order_weight, 
+        delivery_date, 
+        order_color
+    ) VALUES (
+        {serviceTypeId}, 
+        {serviceCategoryId}, 
+        {customerId}, 
+        {orderWeight}, 
+        '{deliveryDate}', 
+        '{orderColor}'
+    )";
             dataAccess.ExecuteQuery(query);
 
             Debug.WriteLine("Order saved successfully.");

@@ -35,7 +35,7 @@
                         <asp:ImageButton ID="service" ImageUrl="~/images/washing-machine.png" width="35px" CssClass="Icons" runat="server" OnClick="service_page" />
                     </div>
                     <div class="icon-container">
-                        <asp:ImageButton ID="user" ImageUrl="~/images/user.png" width="35px" CssClass="Icons" runat="server" OnClick="user_func" /> 
+                        <asp:ImageButton ID="user" ImageUrl="~/images/user.png" width="35px" CssClass="Icons" runat="server" OnClick="customers_page" /> 
                     </div> 
                     <div class="icon-container">
                         <asp:ImageButton ID="report" ImageUrl="~/images/Report.png" width="35px" CssClass="Icons" runat="server" OnClick="reports_func" /> 

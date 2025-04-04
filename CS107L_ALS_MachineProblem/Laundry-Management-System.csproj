@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Customers\Customers.css" />
     <Content Include="Dashboard\Dashboard.css" />
     <Content Include="images\Add.png" />
     <Content Include="images\ALS logo wbg.jpg" />
@@ -141,7 +142,7 @@
     <Content Include="OrderStatus\OrderStatus.aspx" />
     <Content Include="Services\Services.aspx" />
     <Content Include="Reports\Reports.aspx" />
-    <Content Include="User.aspx" />
+    <Content Include="Customers\Customers.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bootstrap\Modal.cs" />
@@ -198,12 +199,12 @@
     <Compile Include="Reports\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User.aspx.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="Customers\Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User.aspx.designer.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="Customers\Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

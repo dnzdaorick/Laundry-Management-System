@@ -1,119 +1,6 @@
-﻿<%@ Page Title="ALS | Customer" Language="C#" MasterPageFile="/Master/Site1.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="CS107L_ALS_MachineProblem.WebForm7" %>
+﻿<%@ Page Title="ALS | Customer" Language="C#" MasterPageFile="../Master/Site1.Master" AutoEventWireup="true" CodeBehind="Customers.aspx.cs" Inherits="CS107L_ALS_MachineProblem.WebForm7" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="mainContent" runat="server">
-    <style>
-        .headers {
-            margin-left: 30px;
-            font-family: 'Arial Rounded MT';
-        }
-        .addCustomerBtn {
-            border-radius: 10px;
-            margin-left: 50px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 700;
-            margin-left: 1100px;
-            color: #05AAEC;
-            border: none;
-        }
-        .searchCustomer {
-            background-color:#ffff;
-            border-radius:30px;
-            position: center;
-            margin-left: 28px;
-            margin-top: 30px;
-            height: 500px;
-            width: 1250px;
-        }
-        .searchCustomerTxtBox {
-            border-radius: 10px;
-            width: 1000px;
-            height: 40px;
-            margin-left: 50px;
-            margin-top: 20px;
-        }
-        .SearchCustButton {
-            border-radius: 10px;
-            height: 40px;
-            background-color: #05AAEC;
-            color: white;
-            width: 100px;
-            border: none;
-            margin-left: 30px;
-        }
-        .labels {
-            margin-left: 15px;
-            font-size: 15px;
-            font-weight: 700; 
-        }
-        .fields {
-            border-radius: 10px;
-            width: 430px;
-            height: 40px;
-            margin-left: 10px;
-        }
-        .checkbox {
-            margin-left: 15px;
-        }
-        .ClearCustBtn {
-            border-radius: 10px;
-            height: 40px;
-            background-color: dimgrey;
-            color: white;
-            width: 100px;
-            border: none;
-        }
-        .SaveCustBtn {
-            border-radius: 10px;
-            height: 40px;
-            background-color: #05AAEC;
-            color: white;
-            margin-right: 20px;
-            width: 120px;
-            border: none;
-        }
-        table {
-        width: 100%;
-        border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background: #e0e0e0;
-            font-weight: bold;
-        }
-
-        td {
-            border-left: 2px solid #ccc; /* Adds vertical dividers */
-        }
-
-        tr {
-            border-bottom: 2px solid #ddd; /* Adds horizontal lines */
-        }
-
-        .edit-btn {
-            background-color: #05AAEC;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .edit-btn:hover {
-            background-color: #0288d1;
-        }
-        .editBtn1 {
-            background-color: #05AAEC;
-            color: white;
-            border-radius: 10px;
-            border: none;
-            margin-left: 50px;
-        }
-    </style>
+    <link href="Customers.css" rel="stylesheet" type="text/css"/>
      <br />
 
      <h1 class="headers">Customers</h1>
@@ -342,19 +229,19 @@
             var address = document.getElementById('<%= adressTextBox.ClientID %>');
 
             if (custLName.value == '' || custGName.value == '' || phNumber.value == '') {
-                alert('Please fill up the required fields.');   
+                alert('Please fill up the required fields.');
             }
 
             else {
                 alert('New Customer Added!');
             }
-            
+
         }
 
         function ShowEdit() {
             var myModal = new bootstrap.Modal(document.getElementById('EditCustomerModal'));
             myModal.show();
-        
+
         }
 
         function ECClearFields() {

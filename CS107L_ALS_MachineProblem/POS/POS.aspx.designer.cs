@@ -51,6 +51,15 @@ namespace CS107L_ALS_MachineProblem
         protected global::System.Web.UI.WebControls.HiddenField hfSelectedWeight;
 
         /// <summary>
+        /// hfSelectedColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfSelectedColor;
+
+        /// <summary>
         /// hfSelectedRate control.
         /// </summary>
         /// <remarks>
